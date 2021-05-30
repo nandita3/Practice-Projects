@@ -1,0 +1,66 @@
+body {
+    background-color: #666;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    color: white;
+}
+
+.screen {
+    cursor: pointer;
+    width: 50%;
+    background-color: black !important;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.controls {
+    background-color: #333;
+    color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 50%;
+}
+
+.controls .btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.btn:focus {
+    outline: 0;
+}
+
+.controls .fa-play {
+    color:yellowgreen;
+}
+
+/* The pause button will be created through the JS */
+.controls .fa-pause {
+    color:white;
+}
+
+.controls .fa-stop {
+    color: red;
+}
+
+.controls .timestamp {
+    margin-left: 10px;
+}
+
+@media (max-width: 800px) {
+    .screen, .controls {
+        width: 90%;
+    }
+}
