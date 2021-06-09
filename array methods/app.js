@@ -11,32 +11,34 @@ let data = [];
 const getData = async () => {
     const response = await fetch('https://randomuser.me/api');
     const data = await response.json();
-    //console.log(data);
+    
+    // console.log(data);
 
     const user = data.results[0];
 
-    const newUser = {
+    const newUser = {                                   //creating an object with name and money properties
         name: `${user.name.first} ${user.name.last}`,
         money: Math.floor(Math.random() * 1000000)
     };
 
-    //console.log(newUser);
+    // console.log(newUser);
+
     addData(newUser);
 
 }
 
 getData();
 getData();
-getData();
+// getData();
 
-//add new object to data arr
+//add new object to data array (so data array will become an array of objects)
 const addData = (obj) => {
     data.push(obj);
     
     updateDOM();
 }
 
-//console.log(data);
+// console.log(data); //gives an array of objects with just name and money properties
 
 
 //update DOM
@@ -56,6 +58,54 @@ providedData.forEach((item) => {
 }
 
 
+const doubleMoney = () => {
+
+    data = data.map((usr) => {
+        return {name: usr.name, money: usr.money * 2};
+    });
+
+    updateDOM();
+
+    console.log(data);
+
+}
+
+
+//I analyzed why the below way of using another variable for altered array didn't work 
+// const doubleMoney = () => {
+
+//     const doubledMoneyArr = data.map((usr) => {
+//         return {name: usr.name, money: usr.money * 2};
+//     });
+
+    
+//     updateDOM(doubledMoneyArr);
+
+//     console.log(doubledMoneyArr);
+//     // console.log(data);
+// }
+
+
+//console.log(data);
+
+
+const sortMoney = () => {
+
+    data.sort((a,b) => {
+        // return a.money - b.money; //sorts in ascending order
+        return b.money - a.money; //sorts in descending order
+    });
+
+    updateDOM();
+}
+
+
+
+
 //Event listeners
 
 add_user.addEventListener('click', getData);
+double_money.addEventListener('click', doubleMoney);
+sort.addEventListener('click', sortMoney);
+
+
