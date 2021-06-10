@@ -57,7 +57,7 @@ providedData.forEach((item) => {
 
 }
 
-
+//Double money
 const doubleMoney = () => {
 
     data = data.map((usr) => {
@@ -89,17 +89,39 @@ const doubleMoney = () => {
 //console.log(data);
 
 
+//Sort by richest
 const sortMoney = () => {
 
     data.sort((a,b) => {
         // return a.money - b.money; //sorts in ascending order
-        return b.money - a.money; //sorts in descending order
+        return b.money - a.money; //sorts in descending order 
+    });
+
+    updateDOM();
+}
+
+//Filter millionaires
+const showMillionaires = () => {
+
+    data = data.filter((amt) => {
+        return amt.money > 1000000;
     });
 
     updateDOM();
 }
 
 
+//Calculate wealth
+const calculateWealth = () => {
+
+    const wealth = data.reduce((acc, user) => {
+        return acc + user.money;
+    }, 0);
+
+    const wealthEl = document.createElement('div');
+    wealthEl.innerHTML = `<h3>Total wealth : ${wealth}`;
+    main.appendChild(wealthEl);
+}
 
 
 //Event listeners
@@ -107,5 +129,6 @@ const sortMoney = () => {
 add_user.addEventListener('click', getData);
 double_money.addEventListener('click', doubleMoney);
 sort.addEventListener('click', sortMoney);
-
+show_millionaires.addEventListener('click', showMillionaires);
+calculate_wealth.addEventListener('click', calculateWealth);
 
