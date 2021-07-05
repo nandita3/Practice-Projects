@@ -17,18 +17,20 @@ const updateSelectedCount = () => {
     count.innerText = selectedSeatsCount;
     total.innerText = selectedSeatsCount * ticketPrice;
 
-    const updatedTotal = selectedSeatsCount * ticketPrice;
+    // const updatedTotal = selectedSeatsCount * ticketPrice;
 };
 
 
 
 //Event listeners
+
 //Movie select event
 selectMovie.addEventListener('change', e => {
     ticketPrice = +e.target.value;
+    updateSelectedCount();
 })
 
-// //Seat click event
+// //Seat click event 
 // container.addEventListener('click', e => {
 //     if(e.target.classList.contains('seat') && !e.target.classList.contains('occupied')) 
 //     {
@@ -48,3 +50,5 @@ for (const sit of seats) {
         updateSelectedCount();
     });
 }
+
+//Have not implemented local storage though it is there in the tutorial
