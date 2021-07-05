@@ -67,7 +67,7 @@ p {
     padding: 1 10px;
 }
 
-.select:focus, input:focus, button:focus {
+select:focus, input:focus, button:focus {
     outline: 0;
 }
 

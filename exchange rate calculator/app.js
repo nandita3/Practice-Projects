@@ -7,15 +7,15 @@ const swapEl = document.getElementById('swap');
 
 //function to fetch exchange rate and update the DOM
 const calculate = () => {
-    fetch(`https://v6.exchangerate-api.com/v6/fed175f158659a5b13d35e1f/latest/${currencyElOne.value}`)
+  fetch(`https://v6.exchangerate-api.com/v6/fed175f158659a5b13d35e1f/latest/${currencyElOne.value}`)    
     .then(res => res.json())
     .then(data => {
         //console.log(data);
-        rate = data.conversion_rates[currencyElTwo.value]; //conversion_rates is received in the response    
+        const rate = data.conversion_rates[currencyElTwo.value]; //conversion_rates is received in the response    
         rateEl.innerText = `1 ${currencyElOne.value} = ${rate} ${currencyElTwo.value}`;
 
         amountElTwo.value = amountElOne.value * rate;
-    });
+    }); 
 }
 
 //Event listeners
